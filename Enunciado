@@ -1,0 +1,114 @@
+/*
+EJERCICIO GRUPAL
+
+--------------------ANTES DE QUE COMIENCEN---------------------
+ 
+Este ejercicio se va a tratar como un caso real, estas son las especificaciones que tras pasar del cliente al jefe de proyecto
+nos llegan a nosotros para que las desarrollemos, esta documentación, debido a que nuestro jefe de proyecto es nuevo y aún no conoce las reglas de la empresa
+PUEDEN SER MODIFICADAS EN CUALQUIER MOMENTO. 
+
+Esto quiere decir que el jefe de proyecto puede modificar las funcionalidades de la aplicación (normalmente no grandes cambios, pero son programadores, espérense CUALQUIER COSA)
+pueden cambiar a petición del cliente y tendremos que adaptarnos en caliente (esto es adaptar lo que tengamos programado o refactorizar funciones si es necesario) para 
+satisfacer en tiempo y forma estas necesidades sin modificar de ninguna forma los plazos de entrega finales de la aplicación. 
+
+
+Señores, bienvenidos al mundo real.
+
+--------------------ANTES DE QUE COMIENCEN---------------------
+
+
+**REVISAR DOCUMENTACION ADICIONAL PARA ESTE EJERCICIO**
+- Documentación sobre la importación de archivos clases dentro de clases en javascript
+
+En grupos de 4 personas vais a crear una aplicación de gestión para una biblioteca : 
+
+Para ejecutar este ejercicio la aplicación tendrá como MINIMO las siguientes clases :
+
+ - Biblioteca
+ - Bibliotecario
+ - Usuario
+ - Libro
+ - Transacción
+
+ Cada una de estas clases tendrá que estar desarrollada por cada uno de los programadores del grupo. 
+ Es INDISPENSABLE y OBLIGATORIO que cada programador desarolle en exclusiva al menos una clase.
+
+ Las entidades de clase deberán llevar AL MENOS los siguientes parámetros :
+
+    - BIBLIOTECA : 
+        - Id
+        - Nombre
+        - Dirección
+        - Código postal
+        - País
+
+    - BIBLOTECARIO
+        - Id
+        - Nombre
+        - Primer Apellido
+        - Segundo Apellido
+        - Fecha de Alta
+        - Fecha de baja
+
+    - USUARIO 
+        - Id
+        - Nombre
+        - Primer Apellido
+        - Segundo Apellido
+        - Fecha de Alta
+        - Fecha de baja
+
+    - LIBRO
+        - Id 
+        - Titulo
+        - Autor
+        - Editorial
+        - Fecha primera edición
+        - Está pretado
+        - Esta a la venta al publico (esto especifíca si el libro aún se vende en el mercado o ya no)
+
+    - TRANSACCION
+        - Id
+        - Id del libro prestado
+        - Id del usuario que adquiere el prestamo
+        - Id del bibliotecario que firma la transacción
+        - Fecha de transacción
+        - Tipo de prestamo (a 7 , 14 o 31 días)
+
+
+    Estructura de la aplicación 
+
+     AppBiblioteca/
+                    Bibloteca.js
+                    controladores/
+                                    Usuario.js
+                                    Bibliotecario.js
+                                    Libro.js
+                                    Transaccion.js
+
+
+
+ La aplicación tendrá que cumplir los siguientes requisitos mínimos : 
+
+  - Crear/Modificar/Borrar usuarios con identificadores únicos (id)
+  - Crear/Modificar/Borrar  trabajadores  con identificadores unicos
+  - Crear/Modificar/Borrar  libros  con identificadores unicos
+
+Cumpliendo las anteriores pautas , la aplicación ha de ejecutar las siguientes acciones : 
+
+    - Ha de poder listar TODOS los libros de la biblioteca
+    - Ha de poder prestar un libro
+    - Ha de poder enviar mensaajes a los usuarios si se pasan de la fecha de prestamo
+    - Ha de poder saber el total de prestamos actuales
+    
+    ATENCION : 
+    Todos los libros pertenecen a la biblioteca así como los bibliotecarios y SOLO pueden ser prestados POR BIBLIOTECARIOS, los usuarios no pueden prestar ni devolver
+    libros por ellos mismos, siempre ha de haber un bibliotecario que firme cada transacción del préstamo/devolución
+
+    La clase biblioteca HA DE TENER UNA FUNCION QUE CALCULE CUALES SON LOS LIBROS QUE TIENEN EL PRESTAMO EXPIRADO
+    La clase usuario HA DE TENER UNA FUNCION QUE CALCULE CUANTOS LIBROS TIENE PRESTADOS (MAXIMO 5 LIBROS) Y SI TIENE ALGUN PRESTAMO VENCIDO
+    La clase Bibliotecario HA DE TENER UNA FUNCION QUE DIGA QUE TRANSACCIONES HA EJECUTADO Y ESTAN EXPIRADAS
+    La clase libro HA DE TENER UNA FUNCION QUE DEVUELVA EL HISTORICO DE PRESAMOS DEL MISMO
+
+
+*/
