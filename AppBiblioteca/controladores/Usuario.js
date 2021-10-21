@@ -3,6 +3,14 @@
  */
 
 class Usuario{
+
+    /**
+     * constructor, funcion que se utiliza para crear un objeto de tipo Usuario
+     * @param {number} id 
+     * @param {string} nombre 
+     * @param {string} primerApellido 
+     * @param {string} segundoApellido 
+     */
     constructor(id, nombre, primerApellido, segundoApellido){
         this.id = id
         this.nombre = nombre 
@@ -12,40 +20,52 @@ class Usuario{
         this.fechaBaja = null
     }
 
-    /**
-     * funcion que crea un usuario a partir de un id
-     * para crear un usuario se utiliza el constructor de arriba
-     */
- /*   crearUsuario(id){
-    
-    }
-*/ 
+///////////////////////////////////////////////////////////////////////////////////
     /**
      * funcion que modifica un usuario, 
      * no se puede modificar el id ni la fechaAlta
-     * @param {*} arrayUsuario, id, nombre, primerApellido, segundoApellido 
+     * 
+     * @param {array} arrayUsuario 
+     * @param {string} nombre 
+     * @param {string} primerApellido 
+     * @param {string} segundoApellido 
+     * @param {Date} fechaBaja 
      */
-    modificarUsuario(arrayUsuario, id, nombre, primerApellido, segundoApellido, fechaBaja){
+    modificarUsuario(arrayUsuario, nombre, primerApellido, segundoApellido, fechaBaja){
         //arrayUsuario es un array de objetos usuario
         // el id del usuario será el índice del arrayUsuario donde se guarda
-        arrayUsuario[id].nombre = nombre
-        arrayUsuario[id].primerApellido = primerApellido
-        arrayUsuario[id].segundoApellido =segundoApellido
-        arrayUsuario[id].fechaBaja = fechaBaja
-    }
-    
-    borrarUsuario(arrayUsuario, id){
-        // la funcion splice(a,b) del array elimina b elementos del array
-        // a partir del elemneto a
-        // para eliminar un elemento en la posicion a sería array.splice(a,1)
-        //arrayUsuario.splice(id,1)
+        // se utiliza this.id porque se hace referencia al id del usuario que llama al método
 
-        //si usamos el método splice los índices del array cambian, como no queremos
-        //que cambien, porque tienen que coincidir con el id, asignamos el valor undefined
-        // a la posicion que queremos borrar, pero sigue existiendo esa posicion del array
-        arrayUsuario[id] = undefined
+        // con la opción ||, si no pasamos argumentos para algun campo, conservaría los anteriores
+        arrayUsuario[this.id].nombre = nombre || this.nombre    
+        arrayUsuario[this.id].primerApellido = primerApellido || this.primerApellido
+        arrayUsuario[this.id].segundoApellido =segundoApellido || this.segundoApellido
+        arrayUsuario[this.id].fechaBaja = fechaBaja || this.fechaBaja
     }
-    
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * funcion para borrar Usuarios, borra el usuario que llama al método
+     * 
+     * una opción sería tener un campo para marcar si el objeto está activado o desactivado(borrado)
+     *   
+     * la opción de usar la funcion splice(a,b) del array elimina b elementos del array
+     * a partir del elemneto a para eliminar un elemento en la posicion a sería array.splice(a,1)
+     * arrayUsuario.splice(id,1)
+     *
+     * no usamos el método splice porque los índices del array cambian, como no queremos
+     * que cambien, porque tienen que coincidir con el id, asignamos el valor undefined
+     * a la posicion que queremos borrar, pero sigue existiendo esa posicion del array
+     * 
+     * @param {array} arrayUsuario 
+     */
+    borrarUsuario(arrayUsuario){
+        // utiliza el id del objeto al que estamos haciendo referencia
+        // de esta manera no tenemos que pasarle la información del id por parámetro
+        arrayUsuario[this.id] = undefined 
+    }
+///////////////////////////////////////////////////////////////////////////////////////
+
     librosPrestados(){
 
     }
@@ -55,7 +75,10 @@ class Usuario{
     }
 } 
 
+    // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
     let arrayUsuarios =[]
+
+    // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
 
     let usuario1 = new Usuario(arrayUsuarios.length,'A','perez')
     arrayUsuarios.push(usuario1)
@@ -69,11 +92,10 @@ class Usuario{
     let usuario4 = new Usuario(arrayUsuarios.length,'D','perez')
     arrayUsuarios.push(usuario4)
     
-    console.log(usuario1)
-    console.log(usuario2)
-    console.log(usuario3)
-    console.log(usuario4)
-    console.log(arrayUsuarios)
+    console.log( 'USUARIO1',usuario1)
+   
+    console.log('ARRAY USUARIOS',arrayUsuarios)
 
-    usuario1.borrarUsuario(arrayUsuarios,3)
-    console.log(arrayUsuarios)
+    usuario1.modificarUsuario(arrayUsuarios)
+    usuario2.borrarUsuario(arrayUsuarios)
+    console.log('ARRAY USUARIOS MODIFICADO',arrayUsuarios)
