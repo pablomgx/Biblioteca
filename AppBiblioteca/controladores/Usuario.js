@@ -1,8 +1,11 @@
 /**
  * clase Usuario
  */
+import {Libro} from "./Libro.js"
+import {Transaccion} from "./Transaccion.js"
+import {Bibliotecario} from "./Bibliotecario.js"
 
-class Usuario{
+export class Usuario{
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Usuario
@@ -67,6 +70,9 @@ class Usuario{
 ///////////////////////////////////////////////////////////////////////////////////////
 
     librosPrestados(){
+        // accede al array de transaccion a través del campo libroId 
+        // del objeto transaccion
+        // recoge todos los datos 
 
     }
 
