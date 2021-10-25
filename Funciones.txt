@@ -1,0 +1,19 @@
+Libros:
+- listar 
+- enviar mensaje prestado pasado fecha
+- total prestamos 
+- funcion devuelva el historico de prestamos del mismo
+
+
+Biblioteca:
+- funcion calcular libros con prestamo expirado
+
+
+Usuario:
+- funcion calcular cuantos libros prestados (max 5) y si tiene prestamo vencido
+
+
+Bibliotecario:
+- funcion que diga que transacciones ha ejecutado y estan expiradas
+- prestar libro
+
