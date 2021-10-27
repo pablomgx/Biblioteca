@@ -71,9 +71,12 @@
 
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
-
     prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id)
 
+
+////////////////////////////////////////////////////////////////////
+
+    // mostrar por pantalla los datos de la transaccion de id  = idTransaccion
    
     let idTransaccion = 0;
 
