@@ -73,7 +73,15 @@
 
     prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id)
 
-    console.log ('Primer Prestamo ', arrayTransacciones[0])
+   
+    let idTransaccion = 0;
 
+    console.log ('Primer Prestamo ', arrayTransacciones[idTransaccion])
+    console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
+    console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].titulo)
+    console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido].nombre)
+    console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario].nombre)
+    console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
+    console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
 
 ///////////////////////////////////////////////////////////////////////////////////
