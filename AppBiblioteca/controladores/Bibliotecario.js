@@ -2,7 +2,7 @@
  * clase Bibliotecarios
  */
 
- class Bibliotecarios {
+ extend class Bibliotecario {
     /**
      * Constructor de la clase Bibliotecarios
      * @param {int} id 
