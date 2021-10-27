@@ -2,10 +2,10 @@
  * clase Usuario
  */
 import {Libro} from "./Libro.js"
-import {Transaccion} from "./Transaccion.js"
-import {Bibliotecario} from "./Bibliotecario.js"
+//import {Transaccion} from "./Transaccion.js"
+//import {Bibliotecario} from "./Bibliotecario.js"
 
-export class Usuario{
+export class Usuario extends Libro{
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Usuario
@@ -15,6 +15,7 @@ export class Usuario{
      * @param {string} segundoApellido 
      */
     constructor(id, nombre, primerApellido, segundoApellido){
+        super()
         this.id = id
         this.nombre = nombre 
         this.primerApellido = primerApellido
@@ -69,18 +70,27 @@ export class Usuario{
     }
 ///////////////////////////////////////////////////////////////////////////////////////
 
-    librosPrestados(){
-        // accede al array de transaccion a través del campo libroId 
-        // del objeto transaccion
-        // recoge todos los datos 
-
+    librosPrestados(arrayUsuario, arrayTransaccion, arrayLibro){
+        let arrayLibrosPrestados = []  // tipo Libros
+        // Accede al array de transaccion a través del campo idUsuarioAdquerido = Usuario.id 
+        // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
+        // con el dato Transaccion.idLibroPrestado accede a la tabla Libros a traves de Libros.id
+        // y de ahi obtiene todos los datos de libros prestados
+        //devuelve una lista con todos los libros prestados a este usuario
+        return arrayLibrosPrestados
     }
 
-    prestamosVencidos(){
+    prestamosVencidos(arrayTransaccion){
+        // con la lista de libros prestados accedemos al arrayTransaccion a traves de 
+        // arrayLibrosPrestados[].id = Transaccion.idLibroPrestado
+        // y calculamos con los datos de 
+        //Transaccion.fechaTransaccion + Transaccion.tipoPrestamo > dia de hoy = prestamoVencido
+        // devuelve una lista con los libros de este usuario this.id que tienen el prestamo vencido
+        return arrayTransaccionesVencidas
 
     }
 } 
-
+/*
     // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
     let arrayUsuarios =[]
 
@@ -105,3 +115,4 @@ export class Usuario{
     usuario1.modificarUsuario(arrayUsuarios)
     usuario2.borrarUsuario(arrayUsuarios)
     console.log('ARRAY USUARIOS MODIFICADO',arrayUsuarios)
+*/
