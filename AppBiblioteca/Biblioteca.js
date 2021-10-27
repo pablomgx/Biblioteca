@@ -61,7 +61,9 @@
    let bibliotecario2 = new Bibliotecario(arrayBibliotecarios.length,'BAnxo','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario2)
    
-  
+  /////////////////////////////////////////////////
+
+
     function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario){
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
@@ -69,15 +71,28 @@
         arrayTransacciones.push(transaccion)
     }
 
+    function listarLibros(arrayLibros){
+        console.log ("\nLISTA DE LIBROS\n")
+
+        console.log('Titulo    //  Autor    //  Editorial //F.Prim.Edicion//Prestado//A la venta','\n')
+        arrayLibros.forEach(element => {
+           
+            console.log(element.titulo,'    ',element.autor,'    ',element.editorial,'    ',element.fechaPrimeraEdicion
+                      ,'    ',  element.prestado,'    ',element.venta,'\n')
+
+                    });
+    
+    }
+////////////////////////////////////////////////////////
+
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
     prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id)
 
-
 ////////////////////////////////////////////////////////////////////
 
     // mostrar por pantalla los datos de la transaccion de id  = idTransaccion
-   
+
     let idTransaccion = 0;
 
     console.log ('Primer Prestamo ', arrayTransacciones[idTransaccion])
@@ -89,3 +104,7 @@
     console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
 
 ///////////////////////////////////////////////////////////////////////////////////
+
+    // llamada a la funcion listarLibros con el arrayLibros
+  
+    listarLibros(arrayLibros)
