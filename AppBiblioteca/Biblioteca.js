@@ -7,7 +7,7 @@
  import {Transaccion} from "./controladores/Transaccion.js";
  import {Bibliotecario} from "./controladores/Bibliotecario.js";
  
- class Biblioteca extends Bibliotecario{
+ class Biblioteca {
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Biblioteca
