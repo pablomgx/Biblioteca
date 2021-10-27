@@ -19,9 +19,19 @@ class Transaccion{
         this.tipoPrestamo = tipoPrestamo
     }
 
-    firmarLibro(){
-        
+    firmarPrestamoLibro(){
+
     }
+
+    prestarLibro(){
+
+    }
+
+    devolverLibro(){
+
+    }
+
+    
 
 
 }
