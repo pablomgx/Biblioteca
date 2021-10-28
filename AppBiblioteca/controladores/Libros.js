@@ -1,6 +1,10 @@
- * clase Libro
+/* clase Libro*/
 
-class Libro{
+import {Bibliotecario} from './Bibliotecario.js';
+import {Usuario} from './Usuario.js';
+
+
+export class Libro{
     constructor(id, titulo, autor, editorial, fechaPrimeraEdicion, prestado, venta){
         this.id = id
         this.titulo = titulo 
@@ -24,9 +28,9 @@ class Libro{
         arrayUsuario[id].prestado = prestado
     }
 
-    borrarUsuario(arrayUsuario, id){
+    borrarLibro(arrayLibro, id){
 
-    arrayUsuario[id] = undefined
+    arrayLibro[id] = undefined
     }
 
     librosPrestados(){
@@ -40,23 +44,11 @@ class Libro{
 
     let arrayLibros =[]
 
-    let libro1 = new libro(arrayUsuarios.length,'A','perez')
-    arraylibro.push(libro1)
-
-    let libro2 = new libro(arrayUsuarios.length,'B','perez')
-    arraylibros.push(libro2)
-
-    let libro3 = new libro(arrayUsuarios.length,'C','perez')
-    arraylibros.push(libro3)
-
-    let usuario4 = new Usuario(arrayUsuarios.length,'D','perez')
-    arraylibrs.push(libro4)
+    let libro1 = new Libro(arrayLibros.length,'A','perez')
+    arrayLibros.push(libro1)
 
     console.log(libro1)
-    console.log(libro2)
-    console.log(libro3)
-    console.log(libro4)
     console.log(arrayLibros)
 
-    libro1.borrarlibro(arrayLibros,3)
+    //libro1.borrarlibro(arrayLibros,3)
     console.log(arrayLibros)
