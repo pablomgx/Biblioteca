@@ -47,7 +47,7 @@ import {Usuario} from './Usuario.js';
     borrarBibliotecario(arrayBibliotecarios) {
         arrayBibliotecarios[this.id] = null
     }
-    historialTransacciones(arrayTransaccion){
+  historialTransacciones(arrayTransaccion){
         for(let i=0;i<=arrayTransaccion.length;i++){
             if(arrayTransaccion[i].idFirmaBibliotecario===this.id){
                 console.log(this.id)
@@ -55,9 +55,12 @@ import {Usuario} from './Usuario.js';
                 console.log("i",i)
                 return console.log(arrayTransaccion[this.id])
             }
-            
+            for(let i=0;i<=arrayTransaccion;i++){
+                if(arrayTransaccion[i].fechaLimitePrestamo<=fechaTransaccion){
+                    console.log(arrayTransaccion[i])
+                }
+            }
         }
-
     }
 }
 //Array para los bibliotecarios
