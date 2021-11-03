@@ -53,14 +53,6 @@ export class Libro{
 
     let libro0 = new Libro(arrayLibros.length,'El hobbit', 'Tolkien','SinMañana','1997',true,true)
     arrayLibros.push(libro0)
-
-    librosPrestados(){
-
-    }
-
-    prestamosVencidos(){
-
-    }
 } 
 
     let arrayLibros =[]
