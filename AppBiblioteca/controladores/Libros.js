@@ -2,6 +2,7 @@
 
 import {Bibliotecario} from './Bibliotecario.js';
 import {Usuario} from './Usuario.js';
+import {Transaccion} from './Transaccion.js';
 
 
 export class Libro{
@@ -32,6 +33,26 @@ export class Libro{
 
     arrayLibro[id] = undefined
     }
+
+    historicoPrestamosLibros(arrayTransaccion){
+        for(let i=0;i<=arrayTransaccion.length;i++){
+            if(arrayTransaccion[i].idLibro===this.id){
+                console.log(this.id)
+                console.log(arrayTransaccion[i].idLibro)
+                console.log("i",i)
+                return console.log(arrayTransaccion[this.id])
+            }
+        }
+    }
+}
+
+    let arrayLibros =[]
+    let arrayTransaccion = []
+    let trans1 = new Transaccion(arrayTransaccion.length,0,0,0,Date(),7)
+    arrayTransaccion.push(trans1)
+
+    let libro0 = new Libro(arrayLibros.length,'El hobbit', 'Tolkien','SinMañana','1997',true,true)
+    arrayLibros.push(libro0)
 
     librosPrestados(){
 
