@@ -69,6 +69,19 @@
         //el id de la transaccion se genera a partir de la longitud del array
         let transaccion = new Transaccion(arrayTransacciones.length, idLibroPrestado, idUsuario, idBibliotecario, 7)
         arrayTransacciones.push(transaccion)
+
+        // mostrar por pantalla los datos de la transaccion que se acaba de realizar
+        // de id  = idTransaccion = arrayTransacciones.length - 1
+        let idTransaccion = arrayTransacciones.length - 1
+        console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
+        console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].titulo)
+        console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido].nombre)
+        console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario].nombre)
+        console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
+        console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
+
+        //se actualiza la propiedad prestado del objeto libro a true
+        arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].prestado = true
     }
 
     function listarLibros(arrayLibros){
@@ -81,27 +94,24 @@
                       ,'    ',  element.prestado,'    ',element.venta,'\n')
 
                     });
-    
     }
+
+    function totalLibrosPrestados(arrayLibros){
+        let totalPrestamosActuales = 0
+        arrayLibros.forEach(element =>{
+            if (element.prestado === true){
+                totalPrestamosActuales = totalPrestamosActuales + 1
+            }
+        });
+        return totalPrestamosActuales
+    }
+
+
 ////////////////////////////////////////////////////////
 
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
     prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id)
-
-////////////////////////////////////////////////////////////////////
-
-    // mostrar por pantalla los datos de la transaccion de id  = idTransaccion
-
-    let idTransaccion = 0;
-
-    console.log ('Primer Prestamo ', arrayTransacciones[idTransaccion])
-    console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
-    console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].titulo)
-    console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido].nombre)
-    console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario].nombre)
-    console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
-    console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
 
 ///////////////////////////////////////////////////////////////////////////////////
 
