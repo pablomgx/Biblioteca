@@ -27,6 +27,9 @@
     }
 
  }
+
+ ////////////////////////////////////////////////////////////////////////////
+ // PRUEBAS
   //crear un array de libros 
   let arrayLibros = []
   // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
@@ -43,13 +46,13 @@
    // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
    let arrayUsuarios =[]
    // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
-   let usuario0 = new Usuario(arrayUsuarios.length,'A','perez')
+   let usuario0 = new Usuario(arrayUsuarios.length,'A','perez','Aperez@gmail.com')
    arrayUsuarios.push(usuario0)
-   let usuario1 = new Usuario(arrayUsuarios.length,'B','perez')
+   let usuario1 = new Usuario(arrayUsuarios.length,'B','perez','Bperez@gmail.com')
    arrayUsuarios.push(usuario1)
-   let usuario2 = new Usuario(arrayUsuarios.length,'C','perez')
+   let usuario2 = new Usuario(arrayUsuarios.length,'C','perez','Cperez@gmail.com')
    arrayUsuarios.push(usuario2)
-   let usuario3 = new Usuario(arrayUsuarios.length,'D','perez')
+   let usuario3 = new Usuario(arrayUsuarios.length,'D','perez','Dperez@gmail.com')
    arrayUsuarios.push(usuario3)
 
    // crear un arry de bibliotecarios 
@@ -79,6 +82,7 @@
         console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario].nombre)
         console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
         console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
+        console.log('Fecha Limite de Préstamo : ', arrayTransacciones[idTransaccion].fechaLimitePrestamo)
 
         //se actualiza la propiedad prestado del objeto libro a true
         arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].prestado = true

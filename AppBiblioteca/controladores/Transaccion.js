@@ -8,6 +8,7 @@ class Transaccion{
      * @param {string} idFirmaBibliotecario //Id del bibliotecario que firma la transacción
      * @param {string} fechaTransaccion 
      * @param {string} tipoPrestamo //Tipo de prestamo (a 7 , 14 o 31 días)
+     * @param {string} fechaLimitePrestamo //suma fechaTransacción + tipoPrestamo
      */
 
     constructor(id, idLibroPrestado, idUsuarioAdquerido, idFirmaBibliotecario, tipoPrestamo){
@@ -17,6 +18,7 @@ class Transaccion{
         this.idFirmaBibliotecario = idFirmaBibliotecario
         this.fechaTransaccion = Date()
         this.tipoPrestamo = tipoPrestamo
+        this.fechaLimitePrestamo = new Date(new Date().setDate(new Date().getDate() + this.tipoPrestamo))
     }
 
     firmarLibro(){

@@ -5,7 +5,7 @@ import {Libro} from "./Libro.js"
 import {Transaccion} from "./Transaccion.js"
 import {Bibliotecario} from "./Bibliotecario.js"
 
-export class Usuario extends Libro{
+export class Usuario{
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Usuario
@@ -13,13 +13,16 @@ export class Usuario extends Libro{
      * @param {string} nombre 
      * @param {string} primerApellido 
      * @param {string} segundoApellido 
+     * @param {string} email 
      */
-    constructor(id, nombre, primerApellido, segundoApellido){
-        super()
+  
+    constructor(id, nombre, primerApellido, segundoApellido, email){
+    
         this.id = id
         this.nombre = nombre 
         this.primerApellido = primerApellido
         this.segundoApellido = segundoApellido
+        this.email = email
         this.fechaAlta = Date()
         this.fechaBaja = null
     }
@@ -33,9 +36,10 @@ export class Usuario extends Libro{
      * @param {string} nombre 
      * @param {string} primerApellido 
      * @param {string} segundoApellido 
+     * @param {string} email 
      * @param {Date} fechaBaja 
      */
-    modificarUsuario(arrayUsuario, nombre, primerApellido, segundoApellido, fechaBaja){
+    modificarUsuario(arrayUsuario, nombre, primerApellido, segundoApellido, email, fechaBaja){
         //arrayUsuario es un array de objetos usuario
         // el id del usuario será el índice del arrayUsuario donde se guarda
         // se utiliza this.id porque se hace referencia al id del usuario que llama al método
@@ -44,6 +48,7 @@ export class Usuario extends Libro{
         arrayUsuario[this.id].nombre = nombre || this.nombre    
         arrayUsuario[this.id].primerApellido = primerApellido || this.primerApellido
         arrayUsuario[this.id].segundoApellido =segundoApellido || this.segundoApellido
+        arrayUsuario[this.id].email =email || this.email
         arrayUsuario[this.id].fechaBaja = fechaBaja || this.fechaBaja
     }
 
@@ -86,11 +91,7 @@ export class Usuario extends Libro{
             }
         });
 
-        // una vez tenemos el arrayLibrosPrestados con las id de los libros prestados y en vigor
-        // a este usuario, se puede acceder al arrayLibros para obtener de estos la información de los libros
-        // a traves de Libros.id y deben tener el campo prestado = true
-        // y de ahi obtiene todos los datos de libros prestados
-        //devuelve una lista con todos los libros prestados a este usuario
+        // devuelve un array con los id de los libros prestados a ese usuario
         return arrayLibrosPrestados
     }
 
@@ -98,10 +99,8 @@ export class Usuario extends Libro{
         let vencido = false
         // con los datos de la transaccion se devuelve true si el prestamo esta vencido
         // y false si no está vencido
-        //Transaccion.fechaTransaccion + Transaccion.tipoPrestamo > dia de hoy = prestamoVencido
-        this.fechaLimitePrestamo = new Date(new Date().setDate(new Date().getDate() + 20))
-         let fechaLimitePrestamo = new Date(element.fechaTrasaccion.setDate(element.fechaTrasaccion.getDate()) + element.tipoPrestamo)
-        if (fechaLimitePrestamo > Date()){
+        // hay un campo fechaLimitePrestamo que indica el día que vence el préstamo
+        if (transaccion.fechaLimitePrestamo > Date()){
             vencido = true
         }  
         return vencido
