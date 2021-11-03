@@ -47,7 +47,16 @@ import {Usuario} from './Usuario.js';
     borrarBibliotecario(arrayBibliotecarios) {
         arrayBibliotecarios[this.id] = null
     }
-    historialTransacciones(){
+    historialTransacciones(arrayTransaccion){
+        for(let i=0;i<=arrayTransaccion.length;i++){
+            if(arrayTransaccion[i].idFirmaBibliotecario===this.id){
+                console.log(this.id)
+                console.log(arrayTransaccion[i].idFirmaBibliotecario)
+                console.log("i",i)
+                return console.log(arrayTransaccion[this.id])
+            }
+            
+        }
 
     }
 }
