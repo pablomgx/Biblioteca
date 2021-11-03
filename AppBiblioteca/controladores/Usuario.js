@@ -2,8 +2,8 @@
  * clase Usuario
  */
 import {Libro} from "./Libro.js"
-//import {Transaccion} from "./Transaccion.js"
-//import {Bibliotecario} from "./Bibliotecario.js"
+import {Transaccion} from "./Transaccion.js"
+import {Bibliotecario} from "./Bibliotecario.js"
 
 export class Usuario extends Libro{
 
@@ -70,28 +70,45 @@ export class Usuario extends Libro{
     }
 ///////////////////////////////////////////////////////////////////////////////////////
 
-    librosPrestados(arrayUsuario, arrayTransaccion, arrayLibro){
+    librosPrestados(arrayTransaccion){
         let arrayLibrosPrestados = []  // tipo Libros
         // Accede al array de transaccion a través del campo idUsuarioAdquerido = Usuario.id 
         // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
-        // con el dato Transaccion.idLibroPrestado accede a la tabla Libros a traves de Libros.id
+        arrayTransaccion.forEach(element => {
+            
+            if (element.idUsuarioAdquerido = this.id){
+                //esta transacción la ha hecho nuestro usuario
+                // se calcula que el prestamo no esté vencido con la funcion prestamoVencido(element)
+                if (!this.prestamoVencido(element)){
+                    //prestamo en vigor, se contabiliza este libro
+                    arrayLibrosPrestados.push(element.idLibroPrestado)
+                }
+            }
+        });
+
+        // una vez tenemos el arrayLibrosPrestados con las id de los libros prestados y en vigor
+        // a este usuario, se puede acceder al arrayLibros para obtener de estos la información de los libros
+        // a traves de Libros.id y deben tener el campo prestado = true
         // y de ahi obtiene todos los datos de libros prestados
         //devuelve una lista con todos los libros prestados a este usuario
         return arrayLibrosPrestados
     }
 
-    prestamosVencidos(arrayTransaccion){
-        // con la lista de libros prestados accedemos al arrayTransaccion a traves de 
-        // arrayLibrosPrestados[].id = Transaccion.idLibroPrestado
-        // y calculamos con los datos de 
+    prestamoVencido(transaccion){
+        let vencido = false
+        // con los datos de la transaccion se devuelve true si el prestamo esta vencido
+        // y false si no está vencido
         //Transaccion.fechaTransaccion + Transaccion.tipoPrestamo > dia de hoy = prestamoVencido
-        // devuelve una lista con los libros de este usuario this.id que tienen el prestamo vencido
-        return arrayTransaccionesVencidas
-
+        this.fechaLimitePrestamo = new Date(new Date().setDate(new Date().getDate() + 20))
+         let fechaLimitePrestamo = new Date(element.fechaTrasaccion.setDate(element.fechaTrasaccion.getDate()) + element.tipoPrestamo)
+        if (fechaLimitePrestamo > Date()){
+            vencido = true
+        }  
+        return vencido
     }
 } 
 /*
-    // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
+    // se crea un array de objetos de tipo Usuario para guardar los datos de los usuarios  
     let arrayUsuarios =[]
 
     // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
