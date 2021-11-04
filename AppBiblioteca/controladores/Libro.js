@@ -18,17 +18,14 @@ export class Libro{
         this.venta = venta
     }
 
- *   crearUsuario(id){
-    
-    }
+ 
+    modificarLibro(arrayLibro, titulo, autor, editorial, prestado){
 
-    modificarUsuario(arrayUsuario, titulo, autor, editorial, prestado){
-
-        arrayUsuario[id-1].nombre = nombre
-        arrayUsuario[id-1].titulo = titulo
-        arrayUsuario[id-1].autor = autor
-        arrayUsuario[id-1].editorial = editorial
-        arrayUsuario[id-1].prestado = prestado
+        arrayLibro[id-1].nombre = nombre
+        arrayLibro[id-1].titulo = titulo
+        arrayLibro[id-1].autor = autor
+        arrayLibro[id-1].editorial = editorial
+        arrayLibro[id-1].prestado = prestado
     }
 
     borrarLibro(arrayLibro, id){
