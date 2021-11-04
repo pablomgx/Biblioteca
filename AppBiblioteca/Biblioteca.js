@@ -41,7 +41,7 @@
   arrayLibros.push(libro3)
   let libro4 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',true,true)
   arrayLibros.push(libro4)
-  let libro5 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',true,true)
+  let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1987',true,true)
   arrayLibros.push(libro5)
 
 console.log(arrayLibros)
@@ -57,7 +57,7 @@ console.log(arrayLibros)
    arrayUsuarios.push(usuario3)
    let usuario4 = new Usuario(arrayUsuarios.length+1,'D','perez','Dperez@gmail.com')
    arrayUsuarios.push(usuario4)
-   let usuario5 = new Usuario(arrayUsuarios.length+1,'D','perez','Dperez@gmail.com')
+   let usuario5 = new Usuario(arrayUsuarios.length+1,'E','perez','Dperez@gmail.com')
    arrayUsuarios.push(usuario5)
 
    // crear un arry de bibliotecarios 
@@ -68,34 +68,34 @@ console.log(arrayLibros)
    arrayBibliotecarios.push(bibliotecario2)
    let bibliotecario3 = new Bibliotecario(arrayBibliotecarios.length+1,'BAnxo','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario3)
-   let bibliotecario4 = new Bibliotecario(arrayBibliotecarios.length+1,'BYago','Parada','Pita')
+   let bibliotecario4 = new Bibliotecario(arrayBibliotecarios.length+1,'BLaura','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario4)
-   let bibliotecario5 = new Bibliotecario(arrayBibliotecarios.length+1,'BAnxo','Parada','Pita')
+   let bibliotecario5 = new Bibliotecario(arrayBibliotecarios.length+1,'BAndrea','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario5)
    
   /////////////////////////////////////////////////
 
 
-    function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario){
+    function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario,tipoPrestamo){
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
-        let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, -1)
+        let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, tipoPrestamo)
         arrayTransacciones.push(transaccion)
 
         // mostrar por pantalla los datos de la transaccion que se acaba de realizar
         // de id  = idTransaccion = arrayTransacciones.length - 1
-        console.log(arrayTransacciones.length)
+        console.log( 'longitud del array transacciones: ',arrayTransacciones.length)
         let idTransaccion = arrayTransacciones.length-1
         console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
-        console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].titulo)
-        console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido].nombre)
-        console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario].nombre)
+        console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado-1].titulo)
+        console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido-1].nombre)
+        console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario-1].nombre)
         console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
         console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
         console.log('Fecha Limite de Préstamo : ', arrayTransacciones[idTransaccion].fechaLimitePrestamo)
 
         //se actualiza la propiedad prestado del objeto libro a true
-        arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].prestado = true
+        arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado-1].prestado = true
     }
 
     function listarLibros(arrayLibros){
@@ -110,14 +110,23 @@ console.log(arrayLibros)
                     });
     }
 
-    function totalLibrosPrestados(arrayLibros){
-        let totalPrestamosActuales = 0
-        arrayLibros.forEach(element =>{
-            if (element.prestado === true){
-                totalPrestamosActuales = totalPrestamosActuales + 1
+    function totalPrestamosActuales(arrayTransacciones){
+        let totalPrestamosEnVigor = 0
+        arrayTransacciones.forEach(transaccion =>{
+            console.log('Id del préstamo :: ', transaccion.id)
+            console.log('Libro del préstamo :: ', arrayLibros[transaccion.idLibroPrestado-1].titulo)
+            console.log('Usuario del préstamo :: ', arrayUsuarios[transaccion.idUsuarioAdquerido-1].nombre)
+            console.log('Bibliotecario del préstamo :: ', arrayBibliotecarios[transaccion.idFirmaBibliotecario-1].nombre)
+            console.log('Fecha del préstamo :: ', transaccion.fechaTransaccion)
+            console.log('Tipo de préstamo :: ', transaccion.tipoPrestamo)
+            console.log('Fecha Limite de Préstamo :: ', transaccion.fechaLimitePrestamo)
+            console.log ('fecha hoy ::' , Date()+0)
+            if (transaccion.fechaLimitePrestamo < Date()+0){
+                totalPrestamosEnVigor = totalPrestamosEnVigor + 1
             }
         });
-        return totalPrestamosActuales
+        console.log('Total de préstamos en vigor :: ', totalPrestamosEnVigor)
+        return totalPrestamosEnVigor
     }
 
 
@@ -125,15 +134,21 @@ console.log(arrayLibros)
 
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
-    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id)
+    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[1].id,arrayBibliotecarios[1].id,-1)
 
 ///////////////////////////////////////////////////////////////////////////////////
 
     // llamada a la funcion listarLibros con el arrayLibros
   
     //listarLibros(arrayLibros)
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[1].id)
-    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[1].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,7)
+    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,7)
+    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,7)
+
    //prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id)
 
-   bibliotecario1.historialTransacciones(arrayTransacciones)
+   //bibliotecario1.historialTransacciones(arrayTransacciones)
+
+   totalPrestamosActuales(arrayTransacciones)
+
