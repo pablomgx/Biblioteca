@@ -5,6 +5,8 @@ import {Usuario} from './Usuario.js';
 import {Transaccion} from './Transaccion.js';
 
 
+
+
 export class Libro{
     constructor(id, titulo, autor, editorial, fechaPrimeraEdicion, prestado, venta){
         this.id = id
@@ -64,3 +66,6 @@ export class Libro{
     //libro1.borrarlibro(arrayLibros,3)
     console.log(arrayLibros)
     */
+
+
+
