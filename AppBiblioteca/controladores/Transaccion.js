@@ -1,4 +1,5 @@
-class Transaccion{
+
+export class Transaccion{
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Usuario

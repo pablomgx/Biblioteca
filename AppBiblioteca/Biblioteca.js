@@ -7,7 +7,7 @@
  import {Transaccion} from "./controladores/Transaccion.js";
  import {Bibliotecario} from "./controladores/Bibliotecario.js";
  
- class Biblioteca {
+ export class Biblioteca {
 
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Biblioteca
@@ -33,36 +33,45 @@
   //crear un array de libros 
   let arrayLibros = []
   // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
-  let libro0 = new Libro(arrayLibros.length,'El hobbit', 'Tolkien','SinMañana','1997',true,true)
-  arrayLibros.push(libro0)
-  let libro1 = new Libro(arrayLibros.length,'Fundacion', 'Asimov','Mañana','2001',true,true)
+  let libro1 = new Libro(arrayLibros.length+1,'El hobbit', 'Tolkien','SinMañana','1997',true,true)
   arrayLibros.push(libro1)
-  let libro2 = new Libro(arrayLibros.length,'Anillos', 'Tolkien','Sin','2010',true,true)
+  let libro2 = new Libro(arrayLibros.length+1,'Fundacion', 'Asimov','Mañana','2001',true,true)
   arrayLibros.push(libro2)
-  let libro3 = new Libro(arrayLibros.length,'Alatriste', 'Reverte','Sina','1987',true,true)
+  let libro3 = new Libro(arrayLibros.length+1,'Anillos', 'Tolkien','Sin','2010',true,true)
   arrayLibros.push(libro3)
+  let libro4 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',true,true)
+  arrayLibros.push(libro4)
+  let libro5 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',true,true)
+  arrayLibros.push(libro5)
 
+console.log(arrayLibros)
   // crear un array de usuarios
    // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
    let arrayUsuarios =[]
    // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
-   let usuario0 = new Usuario(arrayUsuarios.length,'A','perez','Aperez@gmail.com')
-   arrayUsuarios.push(usuario0)
-   let usuario1 = new Usuario(arrayUsuarios.length,'B','perez','Bperez@gmail.com')
+   let usuario1 = new Usuario(arrayUsuarios.length+1,'A','perez','Aperez@gmail.com')
    arrayUsuarios.push(usuario1)
-   let usuario2 = new Usuario(arrayUsuarios.length,'C','perez','Cperez@gmail.com')
+   let usuario2 = new Usuario(arrayUsuarios.length+1,'B','perez','Bperez@gmail.com')
    arrayUsuarios.push(usuario2)
-   let usuario3 = new Usuario(arrayUsuarios.length,'D','perez','Dperez@gmail.com')
+   let usuario3 = new Usuario(arrayUsuarios.length+1,'C','perez','Cperez@gmail.com')
    arrayUsuarios.push(usuario3)
+   let usuario4 = new Usuario(arrayUsuarios.length+1,'D','perez','Dperez@gmail.com')
+   arrayUsuarios.push(usuario4)
+   let usuario5 = new Usuario(arrayUsuarios.length+1,'D','perez','Dperez@gmail.com')
+   arrayUsuarios.push(usuario5)
 
    // crear un arry de bibliotecarios 
    let arrayBibliotecarios = []
-   let bibliotecario0 = new Bibliotecario(arrayBibliotecarios.length,'BPablo','Parada','Pita')
-   arrayBibliotecarios.push(bibliotecario0)
-   let bibliotecario1 = new Bibliotecario(arrayBibliotecarios.length,'BYago','Parada','Pita')
+   let bibliotecario1 = new Bibliotecario(arrayBibliotecarios.length+1,'BPablo','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario1)
-   let bibliotecario2 = new Bibliotecario(arrayBibliotecarios.length,'BAnxo','Parada','Pita')
+   let bibliotecario2 = new Bibliotecario(arrayBibliotecarios.length+1,'BYago','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario2)
+   let bibliotecario3 = new Bibliotecario(arrayBibliotecarios.length+1,'BAnxo','Parada','Pita')
+   arrayBibliotecarios.push(bibliotecario3)
+   let bibliotecario4 = new Bibliotecario(arrayBibliotecarios.length+1,'BYago','Parada','Pita')
+   arrayBibliotecarios.push(bibliotecario4)
+   let bibliotecario5 = new Bibliotecario(arrayBibliotecarios.length+1,'BAnxo','Parada','Pita')
+   arrayBibliotecarios.push(bibliotecario5)
    
   /////////////////////////////////////////////////
 
@@ -70,12 +79,13 @@
     function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario){
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
-        let transaccion = new Transaccion(arrayTransacciones.length, idLibroPrestado, idUsuario, idBibliotecario, 7)
+        let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, -1)
         arrayTransacciones.push(transaccion)
 
         // mostrar por pantalla los datos de la transaccion que se acaba de realizar
         // de id  = idTransaccion = arrayTransacciones.length - 1
-        let idTransaccion = arrayTransacciones.length - 1
+        console.log(arrayTransacciones.length)
+        let idTransaccion = arrayTransacciones.length-1
         console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
         console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado].titulo)
         console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido].nombre)
@@ -121,4 +131,10 @@
 
     // llamada a la funcion listarLibros con el arrayLibros
   
-    listarLibros(arrayLibros)
+    //listarLibros(arrayLibros)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[1].id)
+    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id)
+   //prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id)
+
+   bibliotecario1.historialTransacciones(arrayTransacciones)
+

@@ -1,10 +1,11 @@
 /**
  * clase Bibliotecarios
  */
-import {Libros} from './Libros.js';
+import {Libro} from './Libro.js';
 import {Usuario} from './Usuario.js';
+import { Transaccion } from './Transaccion.js';
 
- class Bibliotecarios {
+ export class Bibliotecario{
     /**
      * Constructor de la clase Bibliotecarios
      * @param {int} id 
@@ -48,21 +49,24 @@ import {Usuario} from './Usuario.js';
         arrayBibliotecarios[this.id] = null
     }
     historialTransacciones(arrayTransaccion){
-        for(let i=0;i<=arrayTransaccion.length;i++){
+        for(let i=0;i<arrayTransaccion.length;i++){
             if(arrayTransaccion[i].idFirmaBibliotecario===this.id){
                 console.log(this.id)
                 console.log(arrayTransaccion[i].idFirmaBibliotecario)
                 console.log("i",i)
                 return console.log(arrayTransaccion[this.id])
             }
-            
+            for(let i=0;i<=arrayTransaccion;i++){
+                if(arrayTransaccion[i].fechaLimitePrestamo<Date()){
+                    console.log(arrayTransaccion[i])
+                }
+            }
         }
-
     }
 }
 //Array para los bibliotecarios
 let arrayBibliotecarios = []
 
 //Creación de bibliotecarios
-let biblio1 = new Bibliotecarios(arrayBibliotecarios.length, 'A', 'Míguez')
+let biblio1 = new Bibliotecario(arrayBibliotecarios.length, 'A', 'Míguez')
 arrayBibliotecarios.push(biblio1)
