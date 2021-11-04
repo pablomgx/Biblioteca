@@ -137,4 +137,3 @@ console.log(arrayLibros)
    //prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id)
 
    bibliotecario1.historialTransacciones(arrayTransacciones)
-
