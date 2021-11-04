@@ -45,11 +45,11 @@ export class Usuario{
         // se utiliza this.id porque se hace referencia al id del usuario que llama al método
 
         // con la opción ||, si no pasamos argumentos para algun campo, conservaría los anteriores
-        arrayUsuario[this.id].nombre = nombre || this.nombre    
-        arrayUsuario[this.id].primerApellido = primerApellido || this.primerApellido
-        arrayUsuario[this.id].segundoApellido =segundoApellido || this.segundoApellido
-        arrayUsuario[this.id].email =email || this.email
-        arrayUsuario[this.id].fechaBaja = fechaBaja || this.fechaBaja
+        arrayUsuario[this.id-1].nombre = nombre || this.nombre    
+        arrayUsuario[this.id-1].primerApellido = primerApellido || this.primerApellido
+        arrayUsuario[this.id-1].segundoApellido =segundoApellido || this.segundoApellido
+        arrayUsuario[this.id-1].email =email || this.email
+        arrayUsuario[this.id-1].fechaBaja = fechaBaja || this.fechaBaja
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,12 +71,13 @@ export class Usuario{
     borrarUsuario(arrayUsuario){
         // utiliza el id del objeto al que estamos haciendo referencia
         // de esta manera no tenemos que pasarle la información del id por parámetro
-        arrayUsuario[this.id] = undefined 
+        arrayUsuario[this.id-1] = undefined 
     }
 ///////////////////////////////////////////////////////////////////////////////////////
 
-    librosPrestados(arrayTransaccion){
-        let arrayLibrosPrestados = []  // tipo Libros
+    librosPrestados(arrayTransaccion,arrayLibros){
+        let arrayLibrosPrestados = []  // tipo id de Libro
+        let arrayLibrosVencidos = []  // tipo id de Libro
         // Accede al array de transaccion a través del campo idUsuarioAdquerido = Usuario.id 
         // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
         arrayTransaccion.forEach(element => {
@@ -87,12 +88,21 @@ export class Usuario{
                 if (!this.prestamoVencido(element)){
                     //prestamo en vigor, se contabiliza este libro
                     arrayLibrosPrestados.push(element.idLibroPrestado)
+                }else{
+                    arrayLibrosVencidos.push(element.idLibroPrestado)
                 }
             }
         });
+        // se muestra un listado de los libros prestados y otro de los libros con prestamo vencido
+        console.log('\nLIBROS PRESTADOS\n')
+        arrayLibrosPrestados.forEach(prestado =>{
+            console.log('Libro Prestado : ', arrayLibros[prestado-1].titulo)
+        });
+        console.log('\nLIBROS PRESTAMO VENCIDO\n')
+        arrayLibrosVencidos.forEach(vencido =>{
+            console.log('Libro con prestamo Vencido : ', arrayLibros[vencido-1].titulo)
+        });
 
-        // devuelve un array con los id de los libros prestados a ese usuario
-        return arrayLibrosPrestados
     }
 
     prestamoVencido(transaccion){
@@ -100,35 +110,9 @@ export class Usuario{
         // con los datos de la transaccion se devuelve true si el prestamo esta vencido
         // y false si no está vencido
         // hay un campo fechaLimitePrestamo que indica el día que vence el préstamo
-        if (transaccion.fechaLimitePrestamo > Date()){
+        if (transaccion.fechaLimitePrestamo.getTime() > Date.now()){
             vencido = true
         }  
         return vencido
     }
 } 
-/*
-    // se crea un array de objetos de tipo Usuario para guardar los datos de los usuarios  
-    let arrayUsuarios =[]
-
-    // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 0
-
-    let usuario1 = new Usuario(arrayUsuarios.length,'A','perez')
-    arrayUsuarios.push(usuario1)
-
-    let usuario2 = new Usuario(arrayUsuarios.length,'B','perez')
-    arrayUsuarios.push(usuario2)
-
-    let usuario3 = new Usuario(arrayUsuarios.length,'C','perez')
-    arrayUsuarios.push(usuario3)
-
-    let usuario4 = new Usuario(arrayUsuarios.length,'D','perez')
-    arrayUsuarios.push(usuario4)
-    
-    console.log( 'USUARIO1',usuario1)
-   
-    console.log('ARRAY USUARIOS',arrayUsuarios)
-
-    usuario1.modificarUsuario(arrayUsuarios)
-    usuario2.borrarUsuario(arrayUsuarios)
-    console.log('ARRAY USUARIOS MODIFICADO',arrayUsuarios)
-*/
