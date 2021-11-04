@@ -46,23 +46,31 @@ import { Transaccion } from './Transaccion.js';
      * @param {int} id 
      */
     borrarBibliotecario(arrayBibliotecarios) {
-        arrayBibliotecarios[this.id] = null
+        arrayBibliotecarios[this.id-1] = null
     }
-    historialTransacciones(arrayTransaccion){
-        for(let i=0;i<arrayTransaccion.length;i++){
-            if(arrayTransaccion[i].idFirmaBibliotecario===this.id){
-                console.log(this.id)
-                console.log(arrayTransaccion[i].idFirmaBibliotecario)
-                console.log("i",i)
-                return console.log(arrayTransaccion[this.id])
+    historialTransacciones(arrayTransacciones){
+        for(let i=0;i<arrayTransacciones.length;i++){
+            if(arrayTransacciones[i].idFirmaBibliotecario===this.id){
+                //console.log(this.id)
+                //console.log(arrayTransacciones[i].idFirmaBibliotecario)
+                //console.log("i",i)
+                return console.log(arrayTransacciones[this.id])
             }
-            for(let i=0;i<=arrayTransaccion;i++){
-                if(arrayTransaccion[i].fechaLimitePrestamo<Date()){
-                    console.log(arrayTransaccion[i])
+            for(let i=0;i<arrayTransacciones;i++){
+                if(arrayTransacciones[i].fechaLimitePrestamo<Date()){
+                    console.log(arrayTransacciones[i])
                 }
             }
         }
     }
+    enviarAviso(arrayTransacciones){
+        for(let i=0;i<arrayTransacciones.length;i++){
+            if(arrayTransacciones[i].fechaLimitePrestamo<Date()){
+                console.log('El usuario con id '+arrayTransacciones[i].idUsuarioAdquerido+' con el id del libro '+arrayTransacciones[i].idLibroPrestado+' se ha pasado de la fecha limite./nFecha actual: '+Date()+'Fecha límite: '+arrayTransacciones[i].fechaLimitePrestamo)
+            }
+        }
+    }
+
 }
 //Array para los bibliotecarios
 let arrayBibliotecarios = []
@@ -70,3 +78,4 @@ let arrayBibliotecarios = []
 //Creación de bibliotecarios
 let biblio1 = new Bibliotecario(arrayBibliotecarios.length, 'A', 'Míguez')
 arrayBibliotecarios.push(biblio1)
+

@@ -24,16 +24,16 @@ export class Libro{
 
     modificarUsuario(arrayUsuario, titulo, autor, editorial, prestado){
 
-        arrayUsuario[id].nombre = nombre
-        arrayUsuario[id].titulo = titulo
-        arrayUsuario[id].autor = autor
-        arrayUsuario[id].editorial = editorial
-        arrayUsuario[id].prestado = prestado
+        arrayUsuario[id-1].nombre = nombre
+        arrayUsuario[id-1].titulo = titulo
+        arrayUsuario[id-1].autor = autor
+        arrayUsuario[id-1].editorial = editorial
+        arrayUsuario[id-1].prestado = prestado
     }
 
     borrarLibro(arrayLibro, id){
 
-    arrayLibro[id] = undefined
+    arrayLibro[id-1] = undefined
     }
 
     historicoPrestamosLibros(arrayTransaccion){

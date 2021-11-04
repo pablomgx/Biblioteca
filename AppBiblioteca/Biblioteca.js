@@ -113,14 +113,23 @@ console.log(arrayLibros)
     function totalPrestamosActuales(arrayTransacciones){
         let totalPrestamosEnVigor = 0
         arrayTransacciones.forEach(transaccion =>{
+            console.log("")
             console.log('Id del préstamo :: ', transaccion.id)
+            console.log("")
             console.log('Libro del préstamo :: ', arrayLibros[transaccion.idLibroPrestado-1].titulo)
+            console.log("")
             console.log('Usuario del préstamo :: ', arrayUsuarios[transaccion.idUsuarioAdquerido-1].nombre)
+            console.log("")
             console.log('Bibliotecario del préstamo :: ', arrayBibliotecarios[transaccion.idFirmaBibliotecario-1].nombre)
+            console.log("")
             console.log('Fecha del préstamo :: ', transaccion.fechaTransaccion)
+            console.log("")
             console.log('Tipo de préstamo :: ', transaccion.tipoPrestamo)
+            console.log("")
             console.log('Fecha Limite de Préstamo :: ', transaccion.fechaLimitePrestamo)
+            console.log("")
             console.log ('fecha hoy ::' , Date()+0)
+            console.log("")
             if (transaccion.fechaLimitePrestamo < Date()+0){
                 totalPrestamosEnVigor = totalPrestamosEnVigor + 1
             }
@@ -128,7 +137,13 @@ console.log(arrayLibros)
         console.log('Total de préstamos en vigor :: ', totalPrestamosEnVigor)
         return totalPrestamosEnVigor
     }
-
+    function  enviarAviso(arrayTransacciones){
+        for(let i=0;i<arrayTransacciones.length;i++){
+            if(arrayTransacciones[i].fechaLimitePrestamo<Date()){
+                console.log('El usuario con id '+arrayTransacciones[i].idUsuarioAdquerido+' con el id del libro '+arrayTransacciones[i].idLibroPrestado+' se ha pasado de la fecha limite./nFecha actual: '+Date()+'Fecha límite: '+arrayTransacciones[i].fechaLimitePrestamo)
+            }
+        }
+    }
 
 ////////////////////////////////////////////////////////
 
@@ -151,4 +166,15 @@ console.log(arrayLibros)
    //bibliotecario1.historialTransacciones(arrayTransacciones)
 
    totalPrestamosActuales(arrayTransacciones)
+   /*console.log("")
+   console.log("TRANSACCIONES: ")
+   console.log("")
+   prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,7)
+   bibliotecario1.historialTransacciones(arrayTransacciones)
+   bibliotecario2.historialTransacciones(arrayTransacciones)
+   bibliotecario3.historialTransacciones(arrayTransacciones)
+   bibliotecario4.historialTransacciones(arrayTransacciones)
+   bibliotecario5.historialTransacciones(arrayTransacciones)
+   bibliotecario1.enviarAviso(arrayTransacciones)*/
+
 
