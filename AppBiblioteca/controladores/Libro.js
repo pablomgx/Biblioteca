@@ -35,7 +35,7 @@ export class Libro{
     }
 
     historicoPrestamosLibros(arrayTransaccion){
-        for(let i=0;i<=arrayTransaccion.length;i++){
+        for(let i=0;i<arrayTransaccion.length;i++){
             if(arrayTransaccion[i].idLibro===this.id){
                 console.log(this.id)
                 console.log(arrayTransaccion[i].idLibro)
