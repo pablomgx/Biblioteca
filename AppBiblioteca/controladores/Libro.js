@@ -10,18 +10,20 @@ export class Libro{
         this.titulo = titulo 
         this.autor = autor
         this.editorial = editorial
-        this.fechaPrimeraEdicion = Date()
+        this.fechaPrimeraEdicion = fechaPrimeraEdicion
         this.prestado = prestado
         this.venta = venta
     }
 
-    modificarLibro(arrayLibro, titulo, autor, editorial, prestado){
+    modificarLibro(arrayLibro, titulo, autor, editorial, prestado, venta){
 
-        arrayLibro[id-1].nombre = nombre
-        arrayLibro[id-1].titulo = titulo
-        arrayLibro[id-1].autor = autor
-        arrayLibro[id-1].editorial = editorial
-        arrayLibro[id-1].prestado = prestado
+        arrayLibro[id-1].nombre = nombre || this.nombre
+        arrayLibro[id-1].titulo = titulo || this.titulo
+        arrayLibro[id-1].autor = autor || this.autor
+        arrayLibro[id-1].editorial = editorial || this.editorial
+        arrayLibro[id-1].prestado = prestado || this.prestado
+        arrayLibro[id-1].venta = venta || this.venta
+
     }
 
     borrarLibro(arrayLibro, id){
@@ -37,9 +39,8 @@ export class Libro{
               //  console.log(this.id)
               //  console.log(arrayTransaccion[i].idLibroPrestado)
               //  console.log("i",i)
-                console.log(arrayTransaccion[this.id])
+                console.log(arrayTransaccion[i])
             }
         }
     }
 }
-
