@@ -94,12 +94,17 @@
     }
 
     function  enviarAviso(arrayTransacciones){
+        console.log('\n AVISOS POR EMAIL A USUARIOS QUE SE HAN PASADO DE LA FECHA LIMITE DE PRÉSTAMO\n')
         for(let i=0;i<arrayTransacciones.length;i++){
             if(arrayTransacciones[i].fechaLimitePrestamo.getTime() < Date.now()){
-                console.log('El usuario con id '+arrayTransacciones[i].idUsuarioAdquerido +
-                ' con el id del libro '+arrayTransacciones[i].idLibroPrestado +
-                ' se ha pasado de la fecha limite./nFecha actual: '+ Date() +
-                'Fecha límite: '+ arrayTransacciones[i].fechaLimitePrestamo)
+                console.log('El usuario con id '+ arrayTransacciones[i].idUsuarioAdquerido +
+                ' ',arrayUsuarios[arrayTransacciones[i].idUsuarioAdquerido-1].nombre,
+                ' \ncon el id del libro '+arrayTransacciones[i].idLibroPrestado +
+                ' ',arrayLibros[arrayTransacciones[i].idLibroPrestado-1].titulo,
+                ' \ncon el email ' +' ',arrayUsuarios[arrayTransacciones[i].idUsuarioAdquerido-1].email,
+
+                ' \nse ha pasado de la fecha limite./nFecha actual: '+ Date() +
+                '\nFecha límite: '+ arrayTransacciones[i].fechaLimitePrestamo,'\n')
             }
         }
     }
@@ -200,7 +205,7 @@ console.log(arrayLibros)
 
    // totalPrestamosActuales(arrayTransacciones)
 
-   // enviarAviso(arrayTransacciones)
+    enviarAviso(arrayTransacciones)
 
    //////////////////////////////////////////////////////////////////
   
