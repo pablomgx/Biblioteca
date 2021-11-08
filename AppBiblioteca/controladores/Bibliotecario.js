@@ -48,22 +48,25 @@ import { Transaccion } from './Transaccion.js';
     borrarBibliotecario(arrayBibliotecarios) {
         arrayBibliotecarios[this.id-1] = null
     }
-    historialTransacciones(arrayTransacciones){
-        for(let i=0;i<arrayTransacciones.length;i++){
-            if(arrayTransacciones[i].idFirmaBibliotecario===this.id){
-                //console.log(this.id)
-                //console.log(arrayTransacciones[i].idFirmaBibliotecario)
+    historialTransaccionesExpiradas(arrayTransacciones){
+
+        console.log("\nPRESTAMOS EXPIRADOS DEL BIBLIOTECARIO : ",this.id, '\n')
+        for(let i=0; i<arrayTransacciones.length; i++){
+           
+            if(arrayTransacciones[i].idFirmaBibliotecario === this.id){
+                //console.log("this.id",this.id)
+                //console.log("array",arrayTransacciones[i].idFirmaBibliotecario)
                 //console.log("i",i)
-                return console.log(arrayTransacciones[this.id])
-            }
-            for(let i=0;i<arrayTransacciones;i++){
-                if(arrayTransacciones[i].fechaLimitePrestamo<Date()){
-                    console.log(arrayTransacciones[i])
+                //console.log("coincide biliotecario: ",arrayTransacciones[this.id])
+                if(arrayTransacciones[i].fechaLimitePrestamo.getTime() < Date.now()){
+                    console.log('\n', arrayTransacciones[i])
                 }
             }
+            
         }
     }
 }
+/*
 //Array para los bibliotecarios
 let arrayBibliotecarios = []
 
@@ -71,3 +74,4 @@ let arrayBibliotecarios = []
 let biblio1 = new Bibliotecario(arrayBibliotecarios.length, 'A', 'Míguez')
 arrayBibliotecarios.push(biblio1)
 
+*/

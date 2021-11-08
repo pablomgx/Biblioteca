@@ -95,7 +95,7 @@
 
     function  enviarAviso(arrayTransacciones){
         for(let i=0;i<arrayTransacciones.length;i++){
-            if(arrayTransacciones[i].fechaLimitePrestamo.getTime() > Date.now()){
+            if(arrayTransacciones[i].fechaLimitePrestamo.getTime() < Date.now()){
                 console.log('El usuario con id '+arrayTransacciones[i].idUsuarioAdquerido+' con el id del libro '+arrayTransacciones[i].idLibroPrestado+' se ha pasado de la fecha limite./nFecha actual: '+Date()+'Fecha límite: '+arrayTransacciones[i].fechaLimitePrestamo)
             }
         }
@@ -153,23 +153,23 @@ console.log(arrayLibros)
 
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
-    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
 
 ///////////////////////////////////////////////////////////////////////////////////
 
     // llamada a la funcion listarLibros con el arrayLibros
   
     //listarLibros(arrayLibros)
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,-1)
-    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,1)
-    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,1)
-    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[1].id,1)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,1)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[1].id,arrayBibliotecarios[0].id,1)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[0].id,arrayBibliotecarios[0].id,1)
 
    //prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id)
 
-   //bibliotecario1.historialTransacciones(arrayTransacciones)
+  //  bibliotecario1.historialTransaccionesExpiradas(arrayTransacciones)
 
-   totalPrestamosActuales(arrayTransacciones)
+   //totalPrestamosActuales(arrayTransacciones)
 
 //   usuario3.librosPrestados(arrayTransacciones,arrayLibros)
 ///////////////////////////////////////
@@ -177,5 +177,9 @@ console.log(arrayLibros)
 
 //creación de la biblioteca
 
-    let biblioteca1 = new Biblioteca(1,'Gonzalez Garces','Coruña','14001','España')
-    biblioteca1.librosConPrestamoExpirado(arrayTransacciones,arrayLibros)
+   // let biblioteca1 = new Biblioteca(1,'Gonzalez Garces','Coruña','14001','España')
+   // biblioteca1.librosConPrestamoExpirado(arrayTransacciones,arrayLibros)
+ 
+  // enviarAviso(arrayTransacciones)
+
+  libro3.historicoPrestamos(arrayTransacciones)
