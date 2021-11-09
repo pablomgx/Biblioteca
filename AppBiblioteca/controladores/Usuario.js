@@ -110,7 +110,7 @@ export class Usuario{
         // con los datos de la transaccion se devuelve true si el prestamo esta vencido
         // y false si no está vencido
         // hay un campo fechaLimitePrestamo que indica el día que vence el préstamo
-        if (transaccion.fechaLimitePrestamo.getTime() > Date.now()){
+        if (transaccion.fechaLimitePrestamo.getTime() < Date.now()){
             vencido = true
         }  
         return vencido
