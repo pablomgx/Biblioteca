@@ -41,7 +41,7 @@ export class Usuario{
      */
     modificarUsuario(arrayUsuario, nombre, primerApellido, segundoApellido, email, fechaBaja){
         //arrayUsuario es un array de objetos usuario
-        // el id del usuario será el índice del arrayUsuario donde se guarda
+        // el id-1 del usuario será el índice del arrayUsuario donde se guarda
         // se utiliza this.id porque se hace referencia al id del usuario que llama al método
 
         // con la opción ||, si no pasamos argumentos para algun campo, conservaría los anteriores
@@ -55,15 +55,9 @@ export class Usuario{
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * funcion para borrar Usuarios, borra el usuario que llama al método
-     * 
-     * una opción sería tener un campo para marcar si el objeto está activado o desactivado(borrado)
-     *   
-     * la opción de usar la funcion splice(a,b) del array elimina b elementos del array
-     * a partir del elemneto a para eliminar un elemento en la posicion a sería array.splice(a,1)
-     * arrayUsuario.splice(id,1)
      *
      * no usamos el método splice porque los índices del array cambian, como no queremos
-     * que cambien, porque tienen que coincidir con el id, asignamos el valor undefined
+     * que cambien, porque tienen que coincidir con el id-1, asignamos el valor null
      * a la posicion que queremos borrar, pero sigue existiendo esa posicion del array
      * 
      * @param {array} arrayUsuario 
@@ -71,14 +65,14 @@ export class Usuario{
     borrarUsuario(arrayUsuario){
         // utiliza el id del objeto al que estamos haciendo referencia
         // de esta manera no tenemos que pasarle la información del id por parámetro
-        arrayUsuario[this.id-1] = undefined 
+        arrayUsuario[this.id-1] = null 
     }
     
     /**
      * función que devuelve los libros que han sido prestados al usuario que llama a la funcion
      * los divide en libros prestados y libros con préstamo vencido
-     * @param {*} arrayTransaccion 
-     * @param {*} arrayLibros 
+     * @param {array} arrayTransaccion 
+     * @param {array} arrayLibros 
      */
     librosPrestados(arrayTransaccion,arrayLibros){
         let arrayLibrosPrestados = []  // tipo id de Libro
@@ -114,7 +108,7 @@ export class Usuario{
     /**
      * función que se utiliza para saber si un préstamo está o no vencido,
      * devuleve verdadero o falso
-     * @param {*} transaccion 
+     * @param {objeto} transaccion 
      * @returns vencido
      */
     prestamoVencido(transaccion){

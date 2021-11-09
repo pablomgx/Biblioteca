@@ -12,11 +12,11 @@
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Biblioteca
      * 
-     * @param {*} id 
-     * @param {*} nombre 
-     * @param {*} direccion 
-     * @param {*} codigoPostal 
-     * @param {*} pais 
+     * @param {number} id 
+     * @param {strin} nombre 
+     * @param {string} direccion 
+     * @param {string} codigoPostal 
+     * @param {string} pais 
      */
     constructor(id, nombre, direccion, codigoPostal, pais){
         this.id = id

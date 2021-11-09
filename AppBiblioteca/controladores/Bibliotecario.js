@@ -24,7 +24,7 @@ import { Transaccion } from './Transaccion.js';
     }
 
     /**
-     * función que modifica un usuario
+     * función que modifica un bibliotecario
      * no se puede modificar el id ni la fechaAlta
      * @param {array} arrayBibliotecarios, id, nombre, primerApellido, segundoApellido
      * @param {int} id
@@ -32,20 +32,19 @@ import { Transaccion } from './Transaccion.js';
      * @param {string} primerApellido
      * @param {string} segundoApellido
      */
-    modificarBibliotecario(arrayBibliotecarios, id, nombre, primerApellido, segundoApellido, fechaBaja) {
+    modificarBibliotecario(arrayBibliotecarios, nombre, primerApellido, segundoApellido, fechaBaja) {
         //arrayBibliotecario es un array de objetos Bibliotecarios
-        //el id del bibliotecario será el indice del arrayBibliotecario donde se guarda
-        arrayBibliotecarios[id].nombre = nombre
-        arrayBibliotecarios[id].primerApellido = primerApellido
-        arrayBibliotecarios[id].segundoApellido = segundoApellido
-        arrayBibliotecarios[id].fechaBaja = fechaBaja
+        //el id-1 del bibliotecario será el indice del arrayBibliotecario donde se guarda
+        arrayBibliotecarios[this.id-1].nombre = nombre || this.nombre
+        arrayBibliotecarios[this.id-1].primerApellido = primerApellido || this.primerApellido
+        arrayBibliotecarios[this.id-1].segundoApellido = segundoApellido || this.segundoApellido
+        arrayBibliotecarios[this.id-1].fechaBaja = fechaBaja || this.fechaBaja
     }
 
     /**
      * función que borra los datos de cierta posición del array (dada por el id)
      * no borra los datos como tal, sino que cambia los datos por un null
      * @param {array} arrayBibliotecarios 
-     * @param {int} id 
      */
     borrarBibliotecario(arrayBibliotecarios) {
         arrayBibliotecarios[this.id-1] = null
@@ -55,7 +54,7 @@ import { Transaccion } from './Transaccion.js';
     /**
      * función que muestra de los préstamos que ha firmado el bibliotecario que llama a la funcion
      * cuales están expirados
-     * @param {*} arrayTransacciones 
+     * @param {array} arrayTransacciones 
      */
     historialTransaccionesExpiradas(arrayTransacciones){
 
