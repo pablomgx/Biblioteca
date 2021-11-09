@@ -71,18 +71,23 @@
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
         let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, tipoPrestamo)
-        arrayTransacciones.push(transaccion)
+        //solo permite presar un libro que no este prestado
+        if (arrayLibros[idLibroPrestado-1].prestado === false){
+            arrayTransacciones.push(transaccion)
 
-        // mostrar por pantalla los datos de la transaccion que se acaba de realizar
-        // de id  = idTransaccion = arrayTransacciones.length - 1
-      
-       console.log('\nPRESTAMO REALIZADO\n')
-       
-       visualizarPrestamo(arrayTransacciones.length)
-       let posicionArray = arrayTransacciones.length - 1
+            // mostrar por pantalla los datos de la transaccion que se acaba de realizar
+            // de id  = idTransaccion = arrayTransacciones.length - 1
+        
+        console.log('\nPRESTAMO REALIZADO\n')
+        
+        visualizarPrestamo(arrayTransacciones.length)
+        let posicionArray = arrayTransacciones.length - 1
 
-        //se actualiza la propiedad prestado del objeto libro a true
-        arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
+            //se actualiza la propiedad prestado del objeto libro a true
+            arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
+        }else{
+            console.log("Este libro ya está prestado")
+        }
     }
 
     /**
@@ -148,15 +153,15 @@
   //CREAR UN ARRAY DE LIBROS
   let arrayLibros = []
   // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 1
-  let libro1 = new Libro(arrayLibros.length+1,'El hobbit', 'Tolkien','SinMañana','1997',true,true)
+  let libro1 = new Libro(arrayLibros.length+1,'El hobbit', 'Tolkien','SinMañana','1997',false,true)
   arrayLibros.push(libro1)
-  let libro2 = new Libro(arrayLibros.length+1,'Fundacion', 'Asimov','Mañana','2001',true,true)
+  let libro2 = new Libro(arrayLibros.length+1,'Fundacion', 'Asimov','Mañana','2001',false,true)
   arrayLibros.push(libro2)
-  let libro3 = new Libro(arrayLibros.length+1,'Anillos', 'Tolkien','Sin','2010',true,true)
+  let libro3 = new Libro(arrayLibros.length+1,'Anillos', 'Tolkien','Sin','2010',false,true)
   arrayLibros.push(libro3)
-  let libro4 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',true,true)
+  let libro4 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',false,true)
   arrayLibros.push(libro4)
-  let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1987',true,true)
+  let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1987',false,true)
   arrayLibros.push(libro5)
 
   // CREAR UN ARRAY DE USUARIOS
