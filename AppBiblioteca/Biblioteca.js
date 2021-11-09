@@ -80,15 +80,7 @@
        
        visualizarPrestamo(arrayTransacciones.length)
        let posicionArray = arrayTransacciones.length - 1
-/*       let idTransaccion = arrayTransacciones.length-1
-        console.log('Id del préstamo : ', arrayTransacciones[idTransaccion].id)
-        console.log('Libro del préstamo : ', arrayLibros[arrayTransacciones[idTransaccion].idLibroPrestado-1].titulo)
-        console.log('Usuario del préstamo : ', arrayUsuarios[arrayTransacciones[idTransaccion].idUsuarioAdquerido-1].nombre)
-        console.log('Bibliotecario del préstamo : ', arrayBibliotecarios[arrayTransacciones[idTransaccion].idFirmaBibliotecario-1].nombre)
-        console.log('Fecha del préstamo : ', arrayTransacciones[idTransaccion].fechaTransaccion)
-        console.log('Tipo de préstamo : ', arrayTransacciones[idTransaccion].tipoPrestamo)
-        console.log('Fecha Limite de Préstamo : ', arrayTransacciones[idTransaccion].fechaLimitePrestamo)
-*/
+
         //se actualiza la propiedad prestado del objeto libro a true
         arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
     }
@@ -119,14 +111,7 @@
         console.log('\nTOTAL DE PRESTAMOS ACTUALES\n')
         arrayTransacciones.forEach(transaccion =>{
             visualizarPrestamo(transaccion.id)
-/*            console.log('Id del préstamo :: ', transaccion.id)
-            console.log('Libro del préstamo :: ', arrayLibros[transaccion.idLibroPrestado-1].titulo)
-            console.log('Usuario del préstamo :: ', arrayUsuarios[transaccion.idUsuarioAdquerido-1].nombre)
-            console.log('Bibliotecario del préstamo :: ', arrayBibliotecarios[transaccion.idFirmaBibliotecario-1].nombre)
-            console.log('Fecha del préstamo :: ', transaccion.fechaTransaccion)
-            console.log('Tipo de préstamo :: ', transaccion.tipoPrestamo)
-            console.log('Fecha Limite de Préstamo :: ', transaccion.fechaLimitePrestamo,'\n')
-  */       
+   
             if (transaccion.fechaLimitePrestamo.getTime() > Date.now()){
                 totalPrestamosEnVigor = totalPrestamosEnVigor + 1
             }
