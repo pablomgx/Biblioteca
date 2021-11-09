@@ -58,7 +58,15 @@
     }
 
 
-
+    /**
+     * función que inserta un objeto transaccion en el arrayTransacciones con los datos pasados por parámetro
+     * del libro prestado, el usuario al que se lo prestan, el bibliotecario que firma el prestamo y el tipo de prestamo
+     * @param {} arrayTransacciones 
+     * @param {*} idLibroPrestado 
+     * @param {*} idUsuario 
+     * @param {*} idBibliotecario 
+     * @param {*} tipoPrestamo 
+     */
     function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario,tipoPrestamo){
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
@@ -85,6 +93,10 @@
         arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
     }
 
+    /**
+     * función que lista todos los libros que hay en la bibioteca a partir de la información contenida en arrayLibros
+     * @param {*} arrayLibros 
+     */
     function listarLibros(arrayLibros){
         console.log ("\nLISTA DE LIBROS\n")
 
@@ -97,6 +109,11 @@
                     });
     }
 
+    /**
+     * funcion que muestra el total de préstamos actuales, indicando cuantos de ellos se encuentran en vigor
+     * @param {*} arrayTransacciones 
+     * @returns 
+     */
     function totalPrestamosActuales(arrayTransacciones){
         let totalPrestamosEnVigor = 0
         console.log('\nTOTAL DE PRESTAMOS ACTUALES\n')
@@ -118,6 +135,10 @@
         return totalPrestamosEnVigor
     }
 
+    /**
+     * función que envía un aviso al usuario cuyo préstamo ha superado el tiempo permitido
+     * @param {} arrayTransacciones 
+     */
     function  enviarAviso(arrayTransacciones){
         console.log('\n AVISOS POR EMAIL A USUARIOS QUE SE HAN PASADO DE LA FECHA LIMITE DE PRÉSTAMO\n')
         for(let i=0;i<arrayTransacciones.length;i++){
@@ -136,8 +157,8 @@
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
-
- //////////////   PRUEBAS    ////////////////////
+//////////////// A PARTIR DE AQUÍ SON PRUEBAS DE LA FUNCIONES //////////////
+ ///////////////////////////////   PRUEBAS    /////////////////////////////
 
   //CREAR UN ARRAY DE LIBROS
   let arrayLibros = []
@@ -221,14 +242,14 @@
    libro3.historicoPrestamos(arrayTransacciones)
 
     //////////////////////////////////////////////////////////////////////
-   // PRUEBAS DE LAS FUNCIONES CREADAS EN EL MAIN 
+   // PRUEBAS DE LAS FUNCIONES CREADAS DETRÁS DE LA CLASE BIBLIOTECA
 
    // prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
    
-    listarLibros(arrayLibros)
+  //  listarLibros(arrayLibros)
 
-    totalPrestamosActuales(arrayTransacciones)
+  //  totalPrestamosActuales(arrayTransacciones)
 
-    enviarAviso(arrayTransacciones)
+   // enviarAviso(arrayTransacciones)
 
    /////////////////////////////////////////////////////////////

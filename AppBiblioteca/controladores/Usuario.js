@@ -73,8 +73,13 @@ export class Usuario{
         // de esta manera no tenemos que pasarle la información del id por parámetro
         arrayUsuario[this.id-1] = undefined 
     }
-///////////////////////////////////////////////////////////////////////////////////////
-
+    
+    /**
+     * función que devuelve los libros que han sido prestados al usuario que llama a la funcion
+     * los divide en libros prestados y libros con préstamo vencido
+     * @param {*} arrayTransaccion 
+     * @param {*} arrayLibros 
+     */
     librosPrestados(arrayTransaccion,arrayLibros){
         let arrayLibrosPrestados = []  // tipo id de Libro
         let arrayLibrosVencidos = []  // tipo id de Libro
@@ -97,6 +102,7 @@ export class Usuario{
         console.log('\nLIBROS PRESTADOS\n')
         arrayLibrosPrestados.forEach(prestado =>{
             console.log('Libro Prestado : ', arrayLibros[prestado-1].titulo)
+           
         });
         console.log('\nLIBROS PRESTAMO VENCIDO\n')
         arrayLibrosVencidos.forEach(vencido =>{
@@ -105,6 +111,12 @@ export class Usuario{
 
     }
 
+    /**
+     * función que se utiliza para saber si un préstamo está o no vencido,
+     * devuleve verdadero o falso
+     * @param {*} transaccion 
+     * @returns vencido
+     */
     prestamoVencido(transaccion){
         let vencido = false
         // con los datos de la transaccion se devuelve true si el prestamo esta vencido

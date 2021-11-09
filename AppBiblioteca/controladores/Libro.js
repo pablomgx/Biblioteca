@@ -31,15 +31,16 @@ export class Libro{
         arrayLibro[id-1] = undefined
     }
 
+    /**
+     * función que muestra los datos del histórico de los préstamos del libro que llama a la funcion
+     * @param {} arrayTransaccion 
+     */
     historicoPrestamos(arrayTransaccion){
         console.log("\nHISTORICO DE PRESTAMOS DEL LIBRO : ",this.titulo, '\n')
         for(let i=0; i<arrayTransaccion.length; i++){
          
             if(arrayTransaccion[i].idLibroPrestado === this.id){
-              //  console.log(this.id)
-              //  console.log(arrayTransaccion[i].idLibroPrestado)
-              //  console.log("i",i)
-                console.log(arrayTransaccion[i])
+                 console.log(arrayTransaccion[i])
             }
         }
     }

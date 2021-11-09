@@ -22,9 +22,4 @@ export class Transaccion{
         this.fechaLimitePrestamo = new Date(new Date().setDate(new Date().getDate() + this.tipoPrestamo))
     }
 
-    firmarLibro(){
-        
-    }
-
-
-}
+ }
