@@ -73,24 +73,29 @@
         let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, tipoPrestamo)
         //solo permite presar un libro que no este prestado
         if (arrayLibros[idLibroPrestado-1].prestado === false){
-            arrayTransacciones.push(transaccion)
+            //función que calcula si el usuario no tiene aun 5 libros prestados
+            if (arrayUsuarios[idUsuario-1].librosPrestados(arrayTransacciones,arrayLibros) < 5) {
+                arrayTransacciones.push(transaccion)
 
-            // mostrar por pantalla los datos de la transaccion que se acaba de realizar
-            // de id  = idTransaccion = arrayTransacciones.length - 1
+                // mostrar por pantalla los datos de la transaccion que se acaba de realizar
+                // de id  = idTransaccion = arrayTransacciones.length - 1
         
-        console.log('\nPRESTAMO REALIZADO\n')
+                console.log('\nPRESTAMO REALIZADO\n')
         
-        visualizarPrestamo(arrayTransacciones.length)
-        let posicionArray = arrayTransacciones.length - 1
+                visualizarPrestamo(arrayTransacciones.length)
+                let posicionArray = arrayTransacciones.length - 1
 
-            //se actualiza la propiedad prestado del objeto libro a true
-            arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
+                //se actualiza la propiedad prestado del objeto libro a true
+                arrayLibros[arrayTransacciones[posicionArray].idLibroPrestado-1].prestado = true
+            }else{
+                console.log("No se pueden prestar mas de 5 libros")
+            }    
         }else{
             console.log("Este libro ya está prestado")
         }
     }
 
-    /**
+     /**
      * función que lista todos los libros que hay en la bibioteca a partir de la información contenida en arrayLibros
      * @param {*} arrayLibros 
      */
@@ -164,6 +169,8 @@
   let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1987',false,true)
   arrayLibros.push(libro5)
 
+  console.log(arrayLibros)
+
   // CREAR UN ARRAY DE USUARIOS
    // creamos un array de objetos de tipo Usuario para guardar los datos de los usuarios  
    let arrayUsuarios =[]
@@ -179,6 +186,8 @@
    let usuario5 = new Usuario(arrayUsuarios.length+1,'Elena','perez','gomez','Eperez@gmail.com')
    arrayUsuarios.push(usuario5)
 
+   console.log(arrayUsuarios)
+
    // CREAR UN ARRAY DE BIBLIOTECARIOS
     // creamos un array de objetos de tipo Bibliotecario para guardar los datos de los bibliotecarios 
    let arrayBibliotecarios = []
@@ -193,6 +202,8 @@
    arrayBibliotecarios.push(bibliotecario4)
    let bibliotecario5 = new Bibliotecario(arrayBibliotecarios.length+1,'BAndrea','Parada','Pita')
    arrayBibliotecarios.push(bibliotecario5)
+
+   console.log(arrayBibliotecarios)
    
   ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -209,6 +220,7 @@
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
 
+    console.log(arrayTransacciones)
   ///////////////////////////////////////////////////////////////////////////////////
   // PRUEBAS DE LA FUNCION CREADA EN LA CLASE BIBLIOTECA
   // creación de la biblioteca

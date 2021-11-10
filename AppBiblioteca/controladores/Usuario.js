@@ -71,12 +71,16 @@ export class Usuario{
     /**
      * función que devuelve los libros que han sido prestados al usuario que llama a la funcion
      * los divide en libros prestados y libros con préstamo vencido
+     * 
+     * devuelve el numero de libros prestados
      * @param {array} arrayTransaccion 
      * @param {array} arrayLibros 
+     * @return totalPrestamos  
      */
     librosPrestados(arrayTransaccion,arrayLibros){
         let arrayLibrosPrestados = []  // tipo id de Libro
         let arrayLibrosVencidos = []  // tipo id de Libro
+        let totalPrestamos
         // Accede al array de transaccion a través del campo idUsuarioAdquerido = Usuario.id 
         // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
         arrayTransaccion.forEach(element => {
@@ -86,6 +90,7 @@ export class Usuario{
                 // se calcula que el prestamo no esté vencido con la funcion prestamoVencido(element)
                 if (!this.prestamoVencido(element)){
                     //prestamo en vigor, se contabiliza este libro
+                    totalPrestamos = totalPrestamos + 1
                     arrayLibrosPrestados.push(element.idLibroPrestado)
                 }else{
                     arrayLibrosVencidos.push(element.idLibroPrestado)
@@ -102,6 +107,7 @@ export class Usuario{
         arrayLibrosVencidos.forEach(vencido =>{
             console.log('Libro con prestamo Vencido : ', arrayLibros[vencido-1].titulo)
         });
+        return totalPrestamos
 
     }
 
