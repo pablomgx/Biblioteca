@@ -80,7 +80,7 @@ export class Usuario{
     librosPrestados(arrayTransaccion,arrayLibros){
         let arrayLibrosPrestados = []  // tipo id de Libro
         let arrayLibrosVencidos = []  // tipo id de Libro
-        let totalPrestamos
+        let totalPrestamos = 0
         // Accede al array de transaccion a través del campo idUsuarioAdquerido = Usuario.id 
         // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
         arrayTransaccion.forEach(element => {
@@ -98,12 +98,12 @@ export class Usuario{
             }
         });
         // se muestra un listado de los libros prestados y otro de los libros con prestamo vencido
-        console.log('\nLIBROS PRESTADOS\n')
+        //console.log('\nLIBROS PRESTADOS\n')
         arrayLibrosPrestados.forEach(prestado =>{
             console.log('Libro Prestado : ', arrayLibros[prestado-1].titulo)
            
         });
-        console.log('\nLIBROS PRESTAMO VENCIDO\n')
+        //console.log('\nLIBROS PRESTAMO VENCIDO\n')
         arrayLibrosVencidos.forEach(vencido =>{
             console.log('Libro con prestamo Vencido : ', arrayLibros[vencido-1].titulo)
         });

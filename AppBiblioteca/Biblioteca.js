@@ -157,6 +157,12 @@
 
   //CREAR UN ARRAY DE LIBROS
   let arrayLibros = []
+ // function crearLibro(arrayLibros,titulo, autor,editorial,ano,prestado, venta){
+ //        let libro = new Libro(arrayLibros.length + 1,titulo, autor,editorial,ano,prestado, venta)
+ //       arrayLibros.push(libro)
+  //}
+  // crearLibro(arrayLibros,'El hobbit', 'Tolkien','SinMañana','1997',false,true)
+  
   // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 1
   let libro1 = new Libro(arrayLibros.length+1,'El hobbit', 'Tolkien','SinMañana','1997',false,true)
   arrayLibros.push(libro1)
@@ -166,8 +172,13 @@
   arrayLibros.push(libro3)
   let libro4 = new Libro(arrayLibros.length+1,'Alatriste', 'Reverte','Sina','1987',false,true)
   arrayLibros.push(libro4)
-  let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1987',false,true)
+  let libro5 = new Libro(arrayLibros.length+1,'Falcó', 'Perez-Reverte','Sina','1997',false,true)
   arrayLibros.push(libro5)
+  let libro6 = new Libro(arrayLibros.length+1,'Circulo del tiempo', 'Jordan','Sina','1998',false,true)
+  arrayLibros.push(libro6)
+  let libro7 = new Libro(arrayLibros.length+1,'Yo Robot', 'Asimov','Sina','1977',false,true)
+  arrayLibros.push(libro7)
+
 
   console.log(arrayLibros)
 
@@ -214,11 +225,16 @@
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[1].id,arrayBibliotecarios[0].id,7)
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[0].id,arrayBibliotecarios[0].id,7)
     prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
 
     //se crean dos objetos de tipo Transaccion donde la fecha de devolución es mayor que la fecha de hoy 
     // poniendo en último de los parámetros a -1
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
 
     console.log(arrayTransacciones)
   ///////////////////////////////////////////////////////////////////////////////////
@@ -226,7 +242,7 @@
   // creación de la biblioteca
 
    // let biblioteca1 = new Biblioteca(1,'Gonzalez Garces','Coruña','14001','España')
-   // biblioteca1.librosConPrestamoExpirado(arrayTransacciones,arrayLibros)
+    // biblioteca1.librosConPrestamoExpirado(arrayTransacciones,arrayLibros)
  
   /////////////////////////////////////////////////////////////////////
   // PRUEBAS DE LA FUNCION CREADA EN LA CLASE BIBLIOTECARIO
