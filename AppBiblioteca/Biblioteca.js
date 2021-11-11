@@ -12,7 +12,7 @@
     /**
      * constructor, funcion que se utiliza para crear un objeto de tipo Biblioteca
      * 
-     * @param {number} id 
+     * @param {int} id 
      * @param {strin} nombre 
      * @param {string} direccion 
      * @param {string} codigoPostal 
@@ -28,8 +28,8 @@
 
     /**
      * muestra información de los libros cuyo préstamo está vencido
-     * @param {*} arrayTransaccion 
-     * @param {*} arrayLibros 
+     * @param {array} arrayTransaccion 
+     * @param {array} arrayLibros 
      */
     librosConPrestamoExpirado(arrayTransaccion,arrayLibros){
 
@@ -44,7 +44,7 @@
  }
     /**
      * funcion que muestra por consola los datos de un préstamo cuyo id coincide con el enviado por parámetro
-     * @param {entero} idTransaccion 
+     * @param {int} idTransaccion 
      */
     function visualizarPrestamo(idTransaccion){
         let indiceArray = idTransaccion-1
@@ -61,11 +61,11 @@
     /**
      * función que inserta un objeto transaccion en el arrayTransacciones con los datos pasados por parámetro
      * del libro prestado, el usuario al que se lo prestan, el bibliotecario que firma el prestamo y el tipo de prestamo
-     * @param {} arrayTransacciones 
-     * @param {*} idLibroPrestado 
-     * @param {*} idUsuario 
-     * @param {*} idBibliotecario 
-     * @param {*} tipoPrestamo 
+     * @param {array} arrayTransacciones 
+     * @param {int} idLibroPrestado 
+     * @param {int} idUsuario 
+     * @param {int} idBibliotecario 
+     * @param {int} tipoPrestamo 
      */
     function prestarLibro(arrayTransacciones, idLibroPrestado, idUsuario, idBibliotecario,tipoPrestamo){
         //se crea un objeto transacción que se  añade al arrayTransacciones
@@ -97,7 +97,7 @@
 
      /**
      * función que lista todos los libros que hay en la bibioteca a partir de la información contenida en arrayLibros
-     * @param {*} arrayLibros 
+     * @param {array} arrayLibros 
      */
     function listarLibros(arrayLibros){
         console.log ("\nLISTA DE LIBROS\n")
@@ -113,7 +113,7 @@
 
     /**
      * funcion que muestra el total de préstamos actuales, indicando cuantos de ellos se encuentran en vigor
-     * @param {*} arrayTransacciones 
+     * @param {array} arrayTransacciones 
      * @returns 
      */
     function totalPrestamosActuales(arrayTransacciones){
@@ -132,7 +132,7 @@
 
     /**
      * función que envía un aviso al usuario cuyo préstamo ha superado el tiempo permitido
-     * @param {} arrayTransacciones 
+     * @param {array} arrayTransacciones 
      */
     function  enviarAviso(arrayTransacciones){
         console.log('\n AVISOS POR EMAIL A USUARIOS QUE SE HAN PASADO DE LA FECHA LIMITE DE PRÉSTAMO\n')
@@ -157,12 +157,7 @@
 
   //CREAR UN ARRAY DE LIBROS
   let arrayLibros = []
- // function crearLibro(arrayLibros,titulo, autor,editorial,ano,prestado, venta){
- //        let libro = new Libro(arrayLibros.length + 1,titulo, autor,editorial,ano,prestado, venta)
- //       arrayLibros.push(libro)
-  //}
-  // crearLibro(arrayLibros,'El hobbit', 'Tolkien','SinMañana','1997',false,true)
-  
+   
   // le asignamos como valor de id el de la siguiente posisión del array, empezando por el 1
   let libro1 = new Libro(arrayLibros.length+1,'El hobbit', 'Tolkien','SinMañana','1997',false,true)
   arrayLibros.push(libro1)
@@ -178,6 +173,10 @@
   arrayLibros.push(libro6)
   let libro7 = new Libro(arrayLibros.length+1,'Yo Robot', 'Asimov','Sina','1977',false,true)
   arrayLibros.push(libro7)
+  let libro8 = new Libro(arrayLibros.length+1,'Quijote', 'Cervantes','Sina','1605',false,true)
+  arrayLibros.push(libro8)
+  let libro9 = new Libro(arrayLibros.length+1,'El sol desnudo', 'Asimov','Sina','1988',false,true)
+  arrayLibros.push(libro8)
 
 
   console.log(arrayLibros)
@@ -222,21 +221,24 @@
     let arrayTransacciones = []
     
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,14)
+
+    //si se intenta prestar un libro ya prestado no lo permite
     prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[1].id,arrayBibliotecarios[0].id,7)
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[0].id,arrayBibliotecarios[0].id,7)
-    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+   
     prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
     prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
     prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[5].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
+    
+    //no permite prestar mas de 5 libros a un mismo usuario
+    prestarLibro(arrayTransacciones,arrayLibros[6].id, arrayUsuarios[3].id,arrayBibliotecarios[4].id,14)
 
     //se crean dos objetos de tipo Transaccion donde la fecha de devolución es mayor que la fecha de hoy 
     // poniendo en último de los parámetros a -1
-    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
-    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[7].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[8].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
 
-    console.log(arrayTransacciones)
   ///////////////////////////////////////////////////////////////////////////////////
   // PRUEBAS DE LA FUNCION CREADA EN LA CLASE BIBLIOTECA
   // creación de la biblioteca

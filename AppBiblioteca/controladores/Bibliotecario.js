@@ -62,6 +62,10 @@ import { Transaccion } from './Transaccion.js';
         
         for(let i=0; i<arrayTransacciones.length; i++){
             if(arrayTransacciones[i].idFirmaBibliotecario === this.id){
+                console.log(arrayTransacciones[i].fechaLimitePrestamo.getTime())
+                console.log(Date.now())
+                console.log(this.id)
+                console.log(arrayTransacciones[i].idFirmaBibliotecario)
                 if(arrayTransacciones[i].fechaLimitePrestamo.getTime() < Date.now()){
                     console.log('\n', arrayTransacciones[i])
                 }
