@@ -71,6 +71,7 @@
         //se crea un objeto transacción que se  añade al arrayTransacciones
         //el id de la transaccion se genera a partir de la longitud del array
         let transaccion = new Transaccion(arrayTransacciones.length+1, idLibroPrestado, idUsuario, idBibliotecario, tipoPrestamo)
+
         //solo permite presar un libro que no este prestado
         if (arrayLibros[idLibroPrestado-1].prestado === false){
             //función que calcula si el usuario no tiene aun 5 libros prestados
@@ -79,7 +80,6 @@
 
                 // mostrar por pantalla los datos de la transaccion que se acaba de realizar
                 // de id  = idTransaccion = arrayTransacciones.length - 1
-        
                 console.log('\nPRESTAMO REALIZADO\n')
         
                 visualizarPrestamo(arrayTransacciones.length)
@@ -176,7 +176,7 @@
   let libro8 = new Libro(arrayLibros.length+1,'Quijote', 'Cervantes','Sina','1605',false,true)
   arrayLibros.push(libro8)
   let libro9 = new Libro(arrayLibros.length+1,'El sol desnudo', 'Asimov','Sina','1988',false,true)
-  arrayLibros.push(libro8)
+  arrayLibros.push(libro9)
 
 
   console.log(arrayLibros)
@@ -220,24 +220,25 @@
  // crear el array de transacciones a partir de la funcion prestarLibro()
     let arrayTransacciones = []
     
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,14)
 
     //si se intenta prestar un libro ya prestado no lo permite
-    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[1].id,arrayBibliotecarios[0].id,7)
+    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[1].id,arrayBibliotecarios[0].id,7)
    
-    prestarLibro(arrayTransacciones,arrayLibros[0].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    prestarLibro(arrayTransacciones,arrayLibros[5].id, arrayUsuarios[3].id,arrayBibliotecarios[3].id,14)
-    
+    prestarLibro(arrayTransacciones,arrayLibros[1].id, arrayUsuarios[2].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[2].id, arrayUsuarios[2].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[3].id, arrayUsuarios[2].id,arrayBibliotecarios[3].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[4].id, arrayUsuarios[2].id,arrayBibliotecarios[3].id,14)
     //no permite prestar mas de 5 libros a un mismo usuario
-    prestarLibro(arrayTransacciones,arrayLibros[6].id, arrayUsuarios[3].id,arrayBibliotecarios[4].id,14)
+    prestarLibro(arrayTransacciones,arrayLibros[5].id, arrayUsuarios[2].id,arrayBibliotecarios[3].id,14)
+    
+    
+    prestarLibro(arrayTransacciones,arrayLibros[6].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,14)
 
     //se crean dos objetos de tipo Transaccion donde la fecha de devolución es mayor que la fecha de hoy 
     // poniendo en último de los parámetros a -1
-    prestarLibro(arrayTransacciones,arrayLibros[7].id, arrayUsuarios[2].id,arrayBibliotecarios[0].id,-1)
-    prestarLibro(arrayTransacciones,arrayLibros[8].id, arrayUsuarios[4].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[7].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
+    prestarLibro(arrayTransacciones,arrayLibros[8].id, arrayUsuarios[3].id,arrayBibliotecarios[0].id,-1)
 
   ///////////////////////////////////////////////////////////////////////////////////
   // PRUEBAS DE LA FUNCION CREADA EN LA CLASE BIBLIOTECA
@@ -254,12 +255,12 @@
   //////////////////////////////////////////////////////////////////////
    // PRUEBAS DE LA FUNCION CREADA EN LA CLASE USUARIO
 
-     usuario3.librosPrestados(arrayTransacciones,arrayLibros)
+   //  usuario3.librosPrestados(arrayTransacciones,arrayLibros)
 
    //////////////////////////////////////////////////////////////////////
    // PRUEBAS DE LA FUNCION CREADA EN LA CLASE LIBRO
 
-   libro3.historicoPrestamos(arrayTransacciones)
+//   libro3.historicoPrestamos(arrayTransacciones)
 
     //////////////////////////////////////////////////////////////////////
    // PRUEBAS DE LAS FUNCIONES CREADAS DETRÁS DE LA CLASE BIBLIOTECA

@@ -85,7 +85,7 @@ export class Usuario{
         // Obtiene la lista de objetos de tipo transaccion que hay en dicho array
         arrayTransaccion.forEach(element => {
             
-            if (element.idUsuarioAdquerido = this.id){
+            if (element.idUsuarioAdquerido === this.id){
                 //esta transacción la ha hecho nuestro usuario
                 // se calcula que el prestamo no esté vencido con la funcion prestamoVencido(element)
                 if (!this.prestamoVencido(element)){
